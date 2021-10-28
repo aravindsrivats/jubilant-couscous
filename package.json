@@ -1,0 +1,11 @@
+{
+  "name": "jubilant-couscous",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests\""
+  },
+  "author": "Aravind Srivatsan <aravindsrivats@gmail.com>",
+  "license": "ISC"
+}
