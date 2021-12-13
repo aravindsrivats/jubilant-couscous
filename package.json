@@ -2,10 +2,14 @@
   "name": "jubilant-couscous",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "source": "src/index.html",
   "scripts": {
-    "test": "echo \"No tests\""
+    "start": "parcel",
+    "build": "parcel build"
   },
   "author": "Aravind Srivatsan <aravindsrivats@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.0.1"
+  }
 }
