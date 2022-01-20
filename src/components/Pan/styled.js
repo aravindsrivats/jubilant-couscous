@@ -21,6 +21,7 @@ const TextField = styled.input`
   border: thin solid #D8D8D8;
   font-size: 1rem;
   padding: 15px;
+  margin-bottom: 40px;
 `
 
 export { Tip, Label, TextField }

@@ -7,7 +7,7 @@ import SetuLogo from '~/src/assets/setu.png'
 
 import { useSteps } from '~/src/store/input'
 
-import { Header, Logo, Image, Heading, Body } from './styled'
+import { Header, Logo, Image, Heading, Body, StartButton, CancelButton } from './styled'
 
 const CollectInput = () => {
   const inputs = {
@@ -25,6 +25,8 @@ const CollectInput = () => {
       <Heading>Data Gateway</Heading>
       <Body>Please provide these details to begin the verification</Body>
       {steps.map(step => inputs[step]())}
+      <StartButton>Begin Verification</StartButton>
+      <CancelButton>Cancel</CancelButton>
     </>
   )
 }
