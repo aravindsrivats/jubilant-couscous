@@ -1,16 +1,13 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { MastHead } from '~/src/components/MastHead'
 import { PanInput } from '~/src/components/Pan'
-
-import ETMoneyLogo from '~/src/assets/etmoney.png'
-import SetuLogo from '~/src/assets/setu.png'
 
 import { useSteps } from '~/src/store/input'
 
 import { Heading, Body } from '~/src/styled/PageElements'
 import { StartButton, CancelButton } from '~/src/styled/Button'
-import { Header, Logo, Image } from './styled'
 
 const SetupVerification = () => {
   const inputs = {
@@ -24,10 +21,7 @@ const SetupVerification = () => {
 
   return (
     <>
-      <Header>
-        <Logo><Image src={ETMoneyLogo} height='30px' /></Logo>
-        <Logo>Powered By <Image src={SetuLogo} height='20px' /></Logo>
-      </Header>
+      <MastHead />
       <Heading>Data Gateway</Heading>
       <Body>Please provide these details to begin the verification</Body>
       {steps.map(step => inputs[step]())}
