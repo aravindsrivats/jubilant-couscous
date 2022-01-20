@@ -12,13 +12,16 @@ const Pan = () => {
 
   const [pan, setPan] = usePan()
 
-  const { number, name, category, valid } = pan
+  const { number, name, category, valid, shouldProcess } = pan
 
   useEffect(() => {
     if (!number) {
       navigate('/', { replace: true })
     }
-  }, [number])
+    if (!shouldProcess) {
+      navigate('/process', { replace: true })
+    }
+  }, [number, shouldProcess])
 
   const verify = async () => {
     const response = await fetch('https://2ddcdcfb-1be8-4a36-a12c-65e706d38e7f.mock.pstmn.io/api/verify/pan', {
@@ -37,6 +40,8 @@ const Pan = () => {
       valid: data?.verification === 'success'
     })
   }
+
+  const complete = () => setPan({ shouldProcess: false })
 
   if (number && !name) {
     return (
@@ -80,7 +85,7 @@ const Pan = () => {
           <Number>{valid && 'Valid'}</Number>
         </Display>
       </Block>
-      <StartButton>Next Step</StartButton>
+      <StartButton onClick={complete}>Next Step</StartButton>
     </>
   )
 }
