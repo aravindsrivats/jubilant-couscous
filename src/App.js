@@ -1,14 +1,21 @@
 import React, { Suspense } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import { Wrapper } from '~/src/styled/PageElements'
 import { CollectInput } from './components/CollectInput'
 
 const App = () => (
-  <Wrapper>
-    <Suspense fallback={<p>loading...</p>}>
-      <CollectInput />
-    </Suspense>  
-  </Wrapper>
+  <Router>
+    <Wrapper>
+      <Suspense fallback={<p>loading...</p>}>
+        <Switch>
+          <Route path='/'>
+            <CollectInput />
+          </Route>
+        </Switch>
+      </Suspense>  
+    </Wrapper>
+  </Router>
 )
 
 export { App }
