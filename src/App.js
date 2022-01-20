@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 
 import { Wrapper } from '~/src/styled/PageElements'
+import { CollectInput } from './components/CollectInput'
 
 const App = () => (
   <Wrapper>
-    Hello World
+    <Suspense fallback={<p>loading...</p>}>
+      <CollectInput />
+    </Suspense>  
   </Wrapper>
 )
 
