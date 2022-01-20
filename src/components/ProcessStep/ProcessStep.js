@@ -1,12 +1,25 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 
-import { Heading } from '~/src/styled/PageElements'
+import { MastHead } from '~/src/components/MastHead'
+
+import { useSteps } from '~/src/store/step'
+
+import { StepInfo, StepItem, Count } from './styled'
 
 const ProcessStep = () => {
+  const [steps, list] = useSteps()
+  
   return (
     <>
-      <Heading>Steps</Heading>
+      <MastHead />
+      <StepInfo>
+        {
+          steps.map((step, index) => {
+            return (<StepItem key={step}><Count>{index+1}</Count>{list[step]}</StepItem>)
+          })
+        }
+      </StepInfo>
       <Outlet />
     </>
   )
