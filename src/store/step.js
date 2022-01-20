@@ -1,25 +1,27 @@
 import { useCallback, useMemo } from 'react'
 
 import { useStore } from './'
-import { usePan } from './pan'
 
-const initialState = [
-  {
-    key: 'pan',
-    name: 'PAN verification',
-    inQueue: false,
-    completed: false,
-  },
-]
+const initialState = [{
+  key: 'pan',
+  name: 'PAN verification',
+  inQueue: false,
+  completed: false,
+}, {
+  key: 'bank',
+  name: 'Bank account verification',
+  inQueue: false,
+  completed: false,
+}]
 
 const useSteps = () => {
   const [state, setState] = useStore()
-  const { step } = state
-  const [pan] = usePan()
+  const { step, pan, bank } = state
 
   const steps = useMemo(() => {
     const list = [
       ...(pan?.shouldProcess ? ['pan'] : []),
+      ...(bank?.shouldProcess ? ['bank'] : []),
     ]
     return step.map(item => {
       if (list.includes(item.key)) {
@@ -31,7 +33,7 @@ const useSteps = () => {
       return item
     }).filter(item => item.inQueue)
      
-  }, [pan])
+  }, [pan, bank])
 
   const setStepComplete = useCallback(
     key =>
