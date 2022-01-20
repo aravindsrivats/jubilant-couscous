@@ -49,7 +49,7 @@ const useSteps = () => {
           return item
         }),
       }),
-    [setState],
+    [step, setState]
   )
 
   const resetSteps = () => setState({

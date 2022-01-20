@@ -1,5 +1,3 @@
-import { useCallback } from 'react'
-
 import { useStore } from './'
 
 const initialState = {
@@ -13,17 +11,14 @@ const useBank = () => {
   const [state, setState] = useStore()
   const { bank } = state
 
-  const setBank = useCallback(
-    data =>
-      setState({ 
-        ...state,
-        bank: {
-          ...state.bank,
-          ...data,
-        }
-      }),
-    [setState],
-  )
+  const setBank = data =>
+    setState({ 
+      ...state,
+      bank: {
+        ...state.bank,
+        ...data,
+      }
+    })
 
   return [bank, setBank]
 }

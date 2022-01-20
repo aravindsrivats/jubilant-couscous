@@ -1,5 +1,3 @@
-import { useCallback } from 'react'
-
 import { useStore } from './'
 
 const initialState = {
@@ -11,17 +9,14 @@ const usePan = () => {
   const [state, setState] = useStore()
   const { pan } = state
 
-  const setPan = useCallback(
-    data =>
-      setState({ 
-        ...state,
-        pan: {
-          ...state.pan,
-          ...data,
-        }
-      }),
-    [setState],
-  )
+  const setPan = data =>
+    setState({ 
+      ...state,
+      pan: {
+        ...state.pan,
+        ...data,
+      }
+    })
 
   return [pan, setPan]
 }
