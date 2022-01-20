@@ -1,5 +1,11 @@
 import React from 'react'
 
-const App = () => <div>Hello World!</div>
+import { Wrapper } from '~/src/styled/PageElements'
+
+const App = () => (
+  <Wrapper>
+    Hello World
+  </Wrapper>
+)
 
 export { App }
