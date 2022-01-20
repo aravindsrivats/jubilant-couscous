@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Wrapper } from '~/src/styled/PageElements'
 
 import { PanVerification } from '~/src/components/PanVerification'
+import { BankVerification } from '~/src/components/BankVerification'
 import { ProcessStep } from './components/ProcessStep'
 import { SetupVerification } from '~/src/components/SetupVerification'
 
@@ -14,6 +15,7 @@ const App = () => (
         <Routes>
           <Route path='/process' element={<ProcessStep />}>
             <Route path='pan' element={<PanVerification />} />
+            <Route path='bank' element={<BankVerification />} />
           </Route>
           <Route exact path='/' element={<SetupVerification />} />
         </Routes>
