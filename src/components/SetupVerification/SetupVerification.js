@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { MastHead } from '~/src/components/MastHead'
-import { PanInput } from '~/src/components/Pan'
+import { PanInput } from '~/src/components/PanVerification'
 
 import { useSteps } from '~/src/store/step'
 

@@ -7,7 +7,7 @@ import { Heading, SmallHeading } from '~/src/styled/PageElements'
 import { StartButton } from '~/src/styled/Button'
 import { Block, Display, Number, EditButton, Consent, CheckIcon } from './styled'
 
-const Pan = () => {
+const PanVerification = () => {
   const navigate = useNavigate()
   const setStepComplete = useOutletContext()
 
@@ -93,4 +93,4 @@ const Pan = () => {
   )
 }
 
-export default Pan
+export default PanVerification

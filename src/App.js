@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import { Wrapper } from '~/src/styled/PageElements'
 
-import { Pan } from '~/src/components/Pan'
+import { PanVerification } from '~/src/components/PanVerification'
 import { ProcessStep } from './components/ProcessStep'
 import { SetupVerification } from '~/src/components/SetupVerification'
 
@@ -13,7 +13,7 @@ const App = () => (
       <Suspense fallback={<p>loading...</p>}>
         <Routes>
           <Route path='/process' element={<ProcessStep />}>
-            <Route path='pan' element={<Pan />} />
+            <Route path='pan' element={<PanVerification />} />
           </Route>
           <Route exact path='/' element={<SetupVerification />} />
         </Routes>
