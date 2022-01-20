@@ -12,12 +12,12 @@ const usePan = () => {
   const { pan } = state
 
   const setPan = useCallback(
-    ({ target: { value }}) =>
+    data =>
       setState({ 
         ...state,
         pan: {
           ...state.pan,
-          number: value,
+          ...data,
         }
       }),
     [setState],
