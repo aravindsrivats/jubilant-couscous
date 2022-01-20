@@ -29,6 +29,7 @@ const Heading = styled.h2`
 const Body = styled.p`
   font-weight: 500;
   line-height: 1.25rem;
+  margin-bottom: 25px;
 `
 
 export { Header, Logo, Image, Heading, Body }
