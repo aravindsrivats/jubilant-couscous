@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import { Wrapper } from '~/src/styled/PageElements'
-import { CollectInput } from './components/CollectInput'
+import { SetupVerification } from './components/SetupVerification'
 
 const App = () => (
   <Router>
@@ -10,7 +10,7 @@ const App = () => (
       <Suspense fallback={<p>loading...</p>}>
         <Switch>
           <Route path='/'>
-            <CollectInput />
+            <SetupVerification />
           </Route>
         </Switch>
       </Suspense>  

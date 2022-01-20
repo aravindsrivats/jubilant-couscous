@@ -9,7 +9,7 @@ import { useSteps } from '~/src/store/input'
 
 import { Header, Logo, Image, Heading, Body, StartButton, CancelButton } from './styled'
 
-const CollectInput = () => {
+const SetupVerification = () => {
   const inputs = {
     pan: () => <PanInput key='pan' />
   }
@@ -31,4 +31,4 @@ const CollectInput = () => {
   )
 }
 
-export default CollectInput
+export default SetupVerification
