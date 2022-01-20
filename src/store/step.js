@@ -1,24 +1,56 @@
-import { useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 
 import { useStore } from './'
 import { usePan } from './pan'
 
-const initialState = {
-  pan: 'PAN verification',
-}
+const initialState = [
+  {
+    key: 'pan',
+    name: 'PAN verification',
+    inQueue: false,
+    completed: false,
+  },
+]
 
 const useSteps = () => {
-  const [{ step: list }] = useStore()
+  const [state, setState] = useStore()
+  const { step } = state
   const [pan] = usePan()
 
   const steps = useMemo(() => {
-    return [
+    const list = [
       ...(pan?.shouldProcess ? ['pan'] : []),
     ]
+    return step.map(item => {
+      if (list.includes(item.key)) {
+        return {
+          ...item,
+          inQueue: true,
+        }
+      }
+      return item
+    }).filter(item => item.inQueue)
      
   }, [pan])
 
-  return [steps, list]
+  const setStepComplete = useCallback(
+    key =>
+      setState({ 
+        ...state,
+        step: step.map(item => {
+          if (item.key === key) {
+            return {
+              ...item,
+              completed: true,
+            }
+          }
+          return item
+        }),
+      }),
+    [setState],
+  )
+
+  return [steps, setStepComplete]
 }
 
 export { useSteps, initialState }

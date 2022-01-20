@@ -24,7 +24,7 @@ const SetupVerification = () => {
       <MastHead />
       <Heading>Data Gateway</Heading>
       <Body>Please provide these details to begin the verification</Body>
-      {steps.map(step => inputs[step]())}
+      {steps.map(step => inputs[step.key]())}
       <StartButton onClick={start}>Begin Verification</StartButton>
       <CancelButton>Cancel</CancelButton>
     </>

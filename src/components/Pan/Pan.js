@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useOutletContext } from 'react-router-dom'
 
 import { usePan } from '~/src/store/pan'
 
@@ -9,6 +9,7 @@ import { Block, Display, Number, EditButton, Consent, CheckIcon } from './styled
 
 const Pan = () => {
   const navigate = useNavigate()
+  const setStepComplete = useOutletContext()
 
   const [pan, setPan] = usePan()
 
@@ -41,7 +42,9 @@ const Pan = () => {
     })
   }
 
-  const complete = () => setPan({ shouldProcess: false })
+  const complete = () => {
+    setStepComplete('pan')
+  }
 
   if (number && !name) {
     return (
