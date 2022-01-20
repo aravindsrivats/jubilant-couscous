@@ -17,7 +17,7 @@ const SetupVerification = () => {
   const navigate = useNavigate()
   const [steps] = useSteps()
 
-  const start = () => navigate('/process/pan')
+  const start = () => navigate('/process')
 
   return (
     <>

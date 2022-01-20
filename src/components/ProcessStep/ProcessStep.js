@@ -14,6 +14,9 @@ const ProcessStep = () => {
   useEffect(() => {
     if (steps.every(step => step?.completed)) {
       navigate('/', { replace: true })
+    } else {
+      const nextStep = steps.find(step => step?.inQueue && !step?.completed)
+      navigate(`${nextStep.key}`)
     }
   }, [steps])
 
