@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { MastHead } from '~/src/components/MastHead'
 import { PanInput } from '~/src/components/Pan'
 
-import { useSteps } from '~/src/store/input'
+import { useSteps } from '~/src/store/step'
 
 import { Heading, Body } from '~/src/styled/PageElements'
 import { StartButton, CancelButton } from '~/src/styled/Button'
