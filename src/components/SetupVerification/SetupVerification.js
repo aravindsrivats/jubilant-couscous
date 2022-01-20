@@ -8,7 +8,9 @@ import SetuLogo from '~/src/assets/setu.png'
 
 import { useSteps } from '~/src/store/input'
 
-import { Header, Logo, Image, Heading, Body, StartButton, CancelButton } from './styled'
+import { Heading, Body } from '~/src/styled/PageElements'
+import { StartButton, CancelButton } from '~/src/styled/Button'
+import { Header, Logo, Image } from './styled'
 
 const SetupVerification = () => {
   const inputs = {

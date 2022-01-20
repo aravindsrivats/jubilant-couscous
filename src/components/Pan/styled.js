@@ -24,13 +24,6 @@ const TextField = styled.input`
   margin-bottom: 40px;
 `
 
-const Heading = styled.h2`
-  display: flex;
-  font-family: Roboto, sans-serif;
-  font-weight: 500;
-  margin-bottom: 20px;
-`
-
 const Block = styled.div`
   display: flex;
   flex-flow: ${props => props.vertical ? 'column' : 'row'};
@@ -95,13 +88,6 @@ const StartButton = styled.button`
   margin-bottom: 15px;
 `
 
-const SmallHeading = styled.h3`
-  font-family: Roboto, sans-serif;
-  font-weight: 500;
-  margin-bottom: 20px;
-  font-size: 1.1rem;
-`
-
 const CheckIcon = styled.div`
   width: 25px;
   height: 25px;
@@ -133,4 +119,4 @@ const CheckIcon = styled.div`
   }
 `
 
-export { Tip, Label, TextField, Heading, Block, Display, Number, EditButton, Consent, StartButton, SmallHeading, CheckIcon }
+export { Tip, Label, TextField, Block, Display, Number, EditButton, Consent, StartButton, CheckIcon }

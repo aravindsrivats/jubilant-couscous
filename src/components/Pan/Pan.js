@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom'
 
 import { usePan } from '~/src/store/pan'
 
-import { Heading, Block, Display, Number, EditButton, Consent, StartButton, SmallHeading, CheckIcon } from './styled'
+import { Heading, SmallHeading } from '~/src/styled/PageElements'
+import { StartButton } from '~/src/styled/Button'
+import { Block, Display, Number, EditButton, Consent, CheckIcon } from './styled'
 
 const Pan = () => {
   const navigate = useNavigate()
