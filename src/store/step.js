@@ -50,7 +50,12 @@ const useSteps = () => {
     [setState],
   )
 
-  return [steps, setStepComplete]
+  const resetSteps = () => setState({
+    ...state,
+    step: initialState,
+  })
+
+  return [steps, setStepComplete, resetSteps]
 }
 
 export { useSteps, initialState }

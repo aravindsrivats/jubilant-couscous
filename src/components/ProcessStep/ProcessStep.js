@@ -11,6 +11,12 @@ const ProcessStep = () => {
   const navigate = useNavigate()
   const [steps, setStepComplete] = useSteps()
 
+  useEffect(() => {
+    if (steps.every(step => step?.completed)) {
+      navigate('/', { replace: true })
+    }
+  }, [steps])
+
   return (
     <>
       <MastHead />
