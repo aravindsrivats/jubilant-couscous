@@ -53,6 +53,9 @@ const BankVerification = () => {
           </Display>
           <EditButton>Edit</EditButton>
         </Block>
+        <Block success>
+          To verify your bank account, &#8377;1 will be credited to your acount for performing a test transaction.
+        </Block>
         <Block vertical>
         <Display gap>
           IFSC
