@@ -71,6 +71,7 @@ const CheckIcon = styled.div`
   border: 2px solid #53B08F;
   margin-right: 15px;
   position: relative;
+  aspect-ratio: 1 / 1;
   &:before {
     position: absolute;
     left: 3px;

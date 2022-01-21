@@ -39,21 +39,22 @@ const RadioButton = styled.input`
   appearance: none;
   margin: 0;
   margin-right: 15px;
-  width: 2.5rem;
-  height: 1.3rem;
+  width: 20px;
+  height: 20px;
   background: #E2E6E9;
   border: thin solid #53B08F;
   border-radius: 50%;
-  display: grid;
+  aspect-ratio: 1 / 1;
   place-content: center;
+  display: grid;
   &:before {
     content: '';
-    width: 0.7em;
-    height: 0.6em;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     transform: scale(0);
     transition: 120ms transform ease;
-    box-shadow: inset 1em 1em #FFFFFF;
+    box-shadow: inset 10px 10px #FFFFFF;
   }
   &:checked {
     background: #53B08F;
