@@ -12,7 +12,7 @@ import { StepList, StepItem, Count, Block, Block, Display, CheckIcon, TickBox } 
 
 const VerificationStatus = () => {
   const navigate = useNavigate()
-  const [steps, _, __, resetSteps] = useSteps()
+  const [steps, _, __, ___, resetSteps] = useSteps()
 
   const start = () => navigate('/setup')
 

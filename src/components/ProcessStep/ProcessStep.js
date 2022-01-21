@@ -9,7 +9,7 @@ import { StepInfo, StepItem, Count, CheckIcon } from './styled'
 
 const ProcessStep = () => {
   const navigate = useNavigate()
-  const [steps, setStepProgress, setStepComplete] = useSteps()
+  const [steps, _, setStepProgress, setStepComplete] = useSteps()
 
   useEffect(() => {
     if (steps.every(step => step?.completed)) {
