@@ -32,6 +32,7 @@ const Option = styled.div`
   border: thin solid #D8D8D8;
   border-radius: 5px;
   margin-bottom: 25px;
+  cursor: pointer;
 `
 
 const RadioButton = styled.input`
@@ -47,6 +48,7 @@ const RadioButton = styled.input`
   aspect-ratio: 1 / 1;
   place-content: center;
   display: grid;
+  cursor: pointer;
   &:before {
     content: '';
     width: 10px;
