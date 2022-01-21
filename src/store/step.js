@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react'
 
-import { useStore } from './'
+import { useStore, initialState as baseAppState } from './'
 
 const initialState = [{
   key: 'pan',
@@ -79,14 +79,10 @@ const useSteps = () => {
     [step, setState]
   )
 
-  const resetSteps = useCallback(
-    () => 
-      setState({
-        ...state,
-        step: initialState,
-      }),
-      [step, setState]
-    ) 
+  const resetSteps = () => 
+    setState({
+      ...baseAppState,
+    })
 
   return [steps, setStepProgress, setStepComplete, resetSteps]
 }
