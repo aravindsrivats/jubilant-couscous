@@ -9,6 +9,7 @@ import { AadharVerification } from '~/src/components/AadharVerification'
 import { ProcessStep } from './components/ProcessStep'
 import { SetupVerification } from '~/src/components/SetupVerification'
 import { VerificationStatus } from '~/src/components/VerificationStatus'
+import { StepSelection } from '~/src/components/StepSelection'
 
 const App = () => (
   <Router>
@@ -21,7 +22,7 @@ const App = () => (
             <Route path='aadhar' element={<AadharVerification />} />
           </Route>
           <Route exact path='/setup' element={<SetupVerification />} />
-          <Route exact path='/' element={<VerificationStatus />} />
+          <Route exact path='/' element={<StepSelection />} />
         </Routes>
       </Suspense>  
     </Wrapper>

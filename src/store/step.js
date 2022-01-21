@@ -87,4 +87,25 @@ const useSteps = () => {
   return [steps, setStepProgress, setStepComplete, resetSteps]
 }
 
-export { useSteps, initialState }
+const useStepList = () => {
+  const [state, setState] = useStore()
+  const { step } = state
+
+  const setStep = (key, status) => 
+    setState({
+      state,
+      step: step.map(item => {
+        if (item.key === key) {
+          return {
+            ...item,
+            inQueue: status,
+          }
+        }
+        return item
+      })
+    })
+
+  return [step, setStep]
+}
+
+export { useSteps, useStepList, initialState }
