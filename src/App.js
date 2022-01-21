@@ -8,6 +8,7 @@ import { BankVerification } from '~/src/components/BankVerification'
 import { AadharVerification } from '~/src/components/AadharVerification'
 import { ProcessStep } from './components/ProcessStep'
 import { SetupVerification } from '~/src/components/SetupVerification'
+import { VerificationStatus } from '~/src/components/VerificationStatus'
 
 const App = () => (
   <Router>
@@ -19,7 +20,8 @@ const App = () => (
             <Route path='bank' element={<BankVerification />} />
             <Route path='aadhar' element={<AadharVerification />} />
           </Route>
-          <Route exact path='/' element={<SetupVerification />} />
+          <Route exact path='/setup' element={<SetupVerification />} />
+          <Route exact path='/' element={<VerificationStatus />} />
         </Routes>
       </Suspense>  
     </Wrapper>
