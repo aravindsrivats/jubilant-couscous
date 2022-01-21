@@ -12,16 +12,22 @@ const initialState = [{
   name: 'Bank account verification',
   inQueue: false,
   completed: false,
+}, {
+  key: 'aadhar',
+  name: 'OKYC',
+  inQueue: false,
+  completed: false,
 }]
 
 const useSteps = () => {
   const [state, setState] = useStore()
-  const { step, pan, bank } = state
+  const { step, pan, bank, aadhar } = state
 
   const steps = useMemo(() => {
     const list = [
       ...(pan?.shouldProcess ? ['pan'] : []),
       ...(bank?.shouldProcess ? ['bank'] : []),
+      ...(aadhar?.shouldProcess ? ['aadhar'] : []),
     ]
     return step.map(item => {
       if (list.includes(item.key)) {
@@ -33,7 +39,7 @@ const useSteps = () => {
       return item
     }).filter(item => item.inQueue)
      
-  }, [pan, bank])
+  }, [pan, bank, aadhar])
 
   const setStepComplete = useCallback(
     key =>

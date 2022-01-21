@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { MastHead } from '~/src/components/MastHead'
 import { PanInput } from '~/src/components/PanVerification'
 import { BankInput } from '~/src/components/BankVerification'
+import { AadharInput } from '~/src/components/AadharVerification'
 
 import { useSteps } from '~/src/store/step'
 
@@ -13,7 +14,8 @@ import { StartButton, CancelButton } from '~/src/styled/Button'
 const SetupVerification = () => {
   const inputs = {
     pan: () => <PanInput key='pan' />,
-    bank: () => <BankInput key='bank' />
+    bank: () => <BankInput key='bank' />,
+    aadhar: () => <AadharInput key='aadhar' />
   }
 
   const navigate = useNavigate()
