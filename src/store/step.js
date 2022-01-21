@@ -39,16 +39,34 @@ const useSteps = () => {
       return item
     }).filter(item => item.inQueue)
      
-  }, [pan, bank, aadhar])
+  }, [step, pan, bank, aadhar])
 
-  const setStepComplete = useCallback(
-    key =>
+  const setStepProgress =  useCallback(
+    key => 
       setState({ 
         ...state,
         step: step.map(item => {
           if (item.key === key) {
             return {
               ...item,
+              inProgress: true,
+            }
+          }
+          return item
+        }),
+      }),
+      [step, setState]
+    )
+
+  const setStepComplete = useCallback(
+    key =>
+      setState({
+        ...state,
+        step: step.map(item => {
+          if (item.key === key) {
+            return {
+              ...item,
+              inProgress: false,
               completed: true,
             }
           }
@@ -63,7 +81,7 @@ const useSteps = () => {
     step: initialState,
   })
 
-  return [steps, setStepComplete, resetSteps]
+  return [steps, setStepProgress, setStepComplete, resetSteps]
 }
 
 export { useSteps, initialState }

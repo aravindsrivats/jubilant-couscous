@@ -9,14 +9,17 @@ import { StepInfo, StepItem, Count, CheckIcon } from './styled'
 
 const ProcessStep = () => {
   const navigate = useNavigate()
-  const [steps, setStepComplete] = useSteps()
+  const [steps, setStepProgress, setStepComplete] = useSteps()
 
   useEffect(() => {
     if (steps.every(step => step?.completed)) {
       navigate('/', { replace: true })
     } else {
       const nextStep = steps.find(step => step?.inQueue && !step?.completed)
-      navigate(`${nextStep.key}`)
+      if (!nextStep.inProgress) {
+        setStepProgress(`${nextStep.key}`)
+        navigate(`${nextStep.key}`)
+      }
     }
   }, [steps])
 
@@ -26,9 +29,12 @@ const ProcessStep = () => {
       <StepInfo>
         {
           steps.map((step, index) => {
+            let state = 'queue'
+            if (step.inProgress) state = 'progress'
+            if (step.completed) state = 'completed'
             return (
               <StepItem key={step.key}>
-                <Count completed={step.completed}>
+                <Count state={state}>
                   {!step.completed ? index+1 : <CheckIcon />}
                 </Count>
                 {step.name}

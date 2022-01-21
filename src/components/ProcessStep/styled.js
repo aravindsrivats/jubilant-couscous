@@ -26,11 +26,17 @@ const StepItem = styled.div`
   position: relative;
 `
 
+const stateColors = {
+  queue: '#9FCEBD',
+  progress: '#53B08F',
+  completed: '#36A168',
+}
+
 const Count = styled.div`
   width: 40px;
   height: 40px;
   line-height: 40px;
-  background: ${props => props.completed? '#36A168' : '#53B08F'};
+  background: ${props => stateColors[props.state]};
   border-radius: 50%;
   color: #FFFFFF;
   text-align: center;
