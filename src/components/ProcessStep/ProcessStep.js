@@ -5,7 +5,7 @@ import { MastHead } from '~/src/components/MastHead'
 
 import { useSteps } from '~/src/store/step'
 
-import { StepInfo, StepItem, Count } from './styled'
+import { StepInfo, StepItem, Count, CheckIcon } from './styled'
 
 const ProcessStep = () => {
   const navigate = useNavigate()
@@ -26,7 +26,14 @@ const ProcessStep = () => {
       <StepInfo>
         {
           steps.map((step, index) => {
-            return (<StepItem key={step.key}><Count>{index+1}</Count>{step.name}</StepItem>)
+            return (
+              <StepItem key={step.key}>
+                <Count completed={step.completed}>
+                  {!step.completed ? index+1 : <CheckIcon />}
+                </Count>
+                {step.name}
+              </StepItem>
+            )
           })
         }
       </StepInfo>
