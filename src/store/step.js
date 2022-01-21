@@ -79,10 +79,14 @@ const useSteps = () => {
     [step, setState]
   )
 
-  const resetSteps = () => setState({
-    ...state,
-    step: initialState,
-  })
+  const resetSteps = useCallback(
+    () => 
+      setState({
+        ...state,
+        step: initialState,
+      }),
+      [step, setState]
+    ) 
 
   return [steps, setStepProgress, setStepComplete, resetSteps]
 }
