@@ -5,7 +5,6 @@ const initialState = {
   captcha: '',
   otp: '',
   shareCode: '',
-  shouldProcess: true,
 }
 
 const useAadhar = () => {

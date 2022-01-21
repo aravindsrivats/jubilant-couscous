@@ -2,7 +2,6 @@ import { useStore } from './'
 
 const initialState = {
   number: '',
-  shouldProcess: true,
 }
 
 const usePan = () => {

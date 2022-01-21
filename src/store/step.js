@@ -24,25 +24,25 @@ const initialState = [{
 
 const useSteps = () => {
   const [state, setState] = useStore()
-  const { step, pan, bank, aadhar } = state
+  const { step } = state
 
-  const steps = useMemo(() => {
-    const list = [
-      ...(pan?.shouldProcess ? ['pan'] : []),
-      ...(bank?.shouldProcess ? ['bank'] : []),
-      ...(aadhar?.shouldProcess ? ['aadhar'] : []),
-    ]
-    return step.map(item => {
-      if (list.includes(item.key)) {
-        return {
-          ...item,
-          inQueue: true,
+  const activeSteps = useMemo(() => 
+    step.filter(item => item.inQueue)
+  , [step])
+
+  const setStepQueue = (key, status) => 
+    setState({
+      state,
+      step: step.map(item => {
+        if (item.key === key) {
+          return {
+            ...item,
+            inQueue: status,
+          }
         }
-      }
-      return item
-    }).filter(item => item.inQueue)
-     
-  }, [step, pan, bank, aadhar])
+        return item
+      })
+    })
 
   const setStepProgress =  useCallback(
     key => 
@@ -84,28 +84,13 @@ const useSteps = () => {
       ...baseAppState,
     })
 
-  return [steps, setStepProgress, setStepComplete, resetSteps]
+  return [activeSteps, setStepQueue, setStepProgress, setStepComplete, resetSteps]
 }
 
 const useStepList = () => {
-  const [state, setState] = useStore()
+  const [state] = useStore()
   const { step } = state
-
-  const setStep = (key, status) => 
-    setState({
-      state,
-      step: step.map(item => {
-        if (item.key === key) {
-          return {
-            ...item,
-            inQueue: status,
-          }
-        }
-        return item
-      })
-    })
-
-  return [step, setStep]
+  return step
 }
 
 export { useSteps, useStepList, initialState }

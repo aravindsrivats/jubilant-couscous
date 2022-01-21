@@ -2,7 +2,6 @@ import { useStore } from './'
 
 const initialState = {
   type: 'upi',
-  shouldProcess: true,
   ifsc: '',
   accountNumber: '',
 }
