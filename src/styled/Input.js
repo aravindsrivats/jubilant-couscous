@@ -16,12 +16,12 @@ margin-bottom: 5px;
 `
 
 const TextField = styled.input`
-width: calc(100% - 30px);
 outline: 0;
 border: thin solid #D8D8D8;
 font-size: 1rem;
 padding: 15px;
 margin-bottom: 40px;
+width: ${props => props.small ? '50%' : 'calc(100% - 30px)'};
 `
 
 const Option = styled.div`
