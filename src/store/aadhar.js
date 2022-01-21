@@ -2,6 +2,9 @@ import { useStore } from './'
 
 const initialState = {
   number: '',
+  captcha: '',
+  otp: '',
+  shareCode: '',
   shouldProcess: true,
 }
 
