@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { MastHead } from '~/src/components/MastHead'
@@ -12,10 +12,13 @@ import { Heading, Body } from '~/src/styled/PageElements'
 import { StartButton, CancelButton } from '~/src/styled/Button'
 
 const SetupVerification = () => {
+  const [withESign, setWithESign] = useState(false)
+
   const inputs = {
     pan: () => <PanInput key='pan' />,
     bank: () => <BankInput key='bank' />,
-    aadhar: () => <AadharInput key='aadhar' />
+    aadhar: () => <AadharInput key='aadhar' withESign={withESign} />,
+    esign: () => !withESign && setWithESign(true),
   }
 
   const navigate = useNavigate()

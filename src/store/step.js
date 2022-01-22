@@ -14,6 +14,10 @@ const initialState = [{
   key: 'aadhar',
   name: 'Offline Aadhar Verification (OKYC)',
   tag: 'OKYC',
+}, {
+  key: 'esign',
+  name: 'E-Sign',
+  tag: 'E-Sign',
 }]
 
 const useSteps = () => {

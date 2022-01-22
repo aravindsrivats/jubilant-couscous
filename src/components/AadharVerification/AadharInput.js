@@ -4,7 +4,7 @@ import { useAadhar } from '~/src/store/aadhar'
 
 import { Tip, Label, TextField } from '~/src/styled/Input'
 
-const AadharInput = () => {
+const AadharInput = ({ withESign }) => {
   const [{ number }, setAadhar] = useAadhar()
 
   const input = e => {
@@ -14,7 +14,7 @@ const AadharInput = () => {
 
   return (
     <>
-      <Tip>For Aadhar KYC</Tip>
+      <Tip>For Aadhar KYC {withESign && 'and E-Sign'}</Tip>
       <Label htmlFor='aadhar'>Enter Aadhar number</Label>
       <TextField type='text' name='aadhar' value={number} onChange={input}  />
     </>
