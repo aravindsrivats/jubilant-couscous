@@ -22,6 +22,7 @@ const App = () => (
             <Route path='aadhar' element={<AadharVerification />} />
           </Route>
           <Route exact path='/setup' element={<SetupVerification />} />
+          <Route exact path='/home' element={<VerificationStatus />} />
           <Route exact path='/' element={<StepSelection />} />
         </Routes>
       </Suspense>  

@@ -32,7 +32,7 @@ const useSteps = () => {
 
   const setStepQueue = (key, status) => 
     setState({
-      state,
+      ...state,
       step: step.map(item => {
         if (item.key === key) {
           return {
