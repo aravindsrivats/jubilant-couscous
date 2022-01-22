@@ -16,7 +16,10 @@ const VerificationStatus = () => {
 
   const start = () => navigate('/setup')
 
-  const done = () => resetSteps()
+  const done = () => {
+    resetSteps()
+    navigate('/')
+  }
 
   if (steps.every(step => step?.completed)) {
     return (
