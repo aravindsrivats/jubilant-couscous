@@ -5,10 +5,10 @@ import { MastHead } from '~/src/components/MastHead'
 
 import { useSteps } from '~/src/store/step'
 
-import { Heading } from '~/src/styled/PageElements'
+import { Heading, Block, Display, Count, CheckIcon, TickBox } from '~/src/styled/PageElements'
 import { StartButton, CancelButton } from '~/src/styled/Button'
 
-import { StepList, StepItem, Count, Block, Block, Display, CheckIcon, TickBox } from './styled'
+import { StepList, StepItem } from './styled'
 
 const VerificationStatus = () => {
   const navigate = useNavigate()
@@ -27,7 +27,7 @@ const VerificationStatus = () => {
         <MastHead />
         <Heading>Successful!</Heading>
         <Block success nospace>
-        <TickBox />
+        <CheckIcon />
         <Display>All verifications are now complete</Display>
       </Block>
         <StepList>
@@ -35,7 +35,7 @@ const VerificationStatus = () => {
             steps.map((step, index) => {
               return (
                 <StepItem key={step.key}>
-                  <Count completed><CheckIcon /></Count>
+                  <Count completed><TickBox /></Count>
                   {step.name}
                 </StepItem>
               )

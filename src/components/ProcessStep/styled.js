@@ -1,5 +1,7 @@
 import styled from '@emotion/styled'
 
+import { Count } from '~/src/styled/PageElements'
+
 const StepInfo = styled.section`
   display: flex;
   justify-content: space-around;
@@ -32,18 +34,17 @@ const stateColors = {
   completed: '#36A168',
 }
 
-const Count = styled.div`
+const CountBox = styled(Count)`
   width: 40px;
   height: 40px;
   line-height: 40px;
   background: ${props => stateColors[props.state]};
-  border-radius: 50%;
   color: #FFFFFF;
-  text-align: center;
+  margin-right: 0px;
   margin-bottom: 10px;
 `
 
-const CheckIcon = styled.div`
+const TickBox = styled.div`
   width: 40px;
   height: 40px;
   margin-right: 15px;
@@ -73,4 +74,4 @@ const CheckIcon = styled.div`
   }
 `
 
-export { StepInfo, StepItem, Count, CheckIcon }
+export { StepInfo, StepItem, CountBox, TickBox }

@@ -5,7 +5,8 @@ import { MastHead } from '~/src/components/MastHead'
 
 import { useSteps } from '~/src/store/step'
 
-import { StepInfo, StepItem, Count, CheckIcon } from './styled'
+import { TickBox } from '~/src/styled/PageElements'
+import { StepInfo, StepItem, CountBox } from './styled'
 
 const ProcessStep = () => {
   const navigate = useNavigate()
@@ -34,9 +35,9 @@ const ProcessStep = () => {
             if (step.completed) state = 'completed'
             return (
               <StepItem key={step.key}>
-                <Count state={state}>
-                  {!step.completed ? index+1 : <CheckIcon />}
-                </Count>
+                <CountBox state={state}>
+                  {!step.completed ? index+1 : <TickBox />}
+                </CountBox>
                 {step.name}
               </StepItem>
             )

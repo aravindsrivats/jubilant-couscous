@@ -3,10 +3,10 @@ import { useNavigate, useOutletContext } from 'react-router-dom'
 
 import { useAadhar } from '~/src/store/aadhar'
 
-import { Heading, SmallHeading } from '~/src/styled/PageElements'
+import { Heading, SmallHeading, Block, Display, Number, EditButton, CheckIcon } from '~/src/styled/PageElements'
 import { StartButton } from '~/src/styled/Button'
 import { TextField }from '~/src/styled/Input'
-import { Block, Display, Number, EditButton, InfoLabel, CheckIcon, Highlight, Captcha, PlaceHolder } from './styled'
+import { InfoLabel, Highlight, Captcha, PlaceHolder } from './styled'
 
 const AadharVerification = () => {
   const navigate = useNavigate()

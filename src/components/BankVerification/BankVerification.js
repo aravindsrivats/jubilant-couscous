@@ -3,9 +3,8 @@ import { useNavigate, useOutletContext } from 'react-router-dom'
 
 import { useBank } from '~/src/store/bank'
 
-import { Heading, SmallHeading } from '~/src/styled/PageElements'
+import { Heading, SmallHeading, Block, Display, Number, EditButton, Consent, CheckIcon } from '~/src/styled/PageElements'
 import { StartButton } from '~/src/styled/Button'
-import { Block, Display, Number, EditButton, Consent, CheckIcon } from './styled'
 
 const BankVerification = () => {
   const navigate = useNavigate()
