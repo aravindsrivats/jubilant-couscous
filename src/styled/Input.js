@@ -10,9 +10,9 @@ margin: 0 0 10px 0;
 `
 
 const Label = styled.label`
-display: block;
-font-weight: 500;
-margin-bottom: 5px;
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
 `
 
 const TextField = styled.input`
@@ -74,4 +74,44 @@ const SubLabel = styled.span`
   color: #8D8D8D;
 `
 
-export { Tip, Label, TextField, Option, RadioButton, SubLabel }
+const CheckboxInput = styled.input`
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #FFFFFF;
+  border: 2px solid #53B08F;
+  border-radius: 3px;
+  margin-right: 20px;
+  cursor: pointer;
+  position: relative;
+  aspect-ratio: 1 / 1;
+
+  &:checked {
+    background: #53B08F;
+  }
+  &:checked:before {
+    position: absolute;
+    left: -3px;
+    top: 6px;
+    height: 50%;
+    width: 2px;
+    background-color: #FFFFFF;
+    content: '';
+    transform: translateX(10px) rotate(-45deg);
+    transform-origin: left bottom;
+  }
+  &:checked:after {
+    position: absolute;
+    left: -2px;
+    bottom: 3px;
+    height: 2px;
+    width: 70%;
+    background-color: #FFFFFF;
+    content: '';
+    transform: translateX(10px) rotate(-45deg);
+    transform-origin: left bottom;
+  }
+`
+
+
+export { Tip, Label, TextField, Option, RadioButton, SubLabel, CheckboxInput }

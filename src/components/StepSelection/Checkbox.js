@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+import { CheckboxInput } from '~/src/styled/Input'
+import { CheckboxContainer } from './styled'
+
 const Checkbox = ({ step, toggle }) => {
   const { key, name } = step
 
@@ -11,10 +14,10 @@ const Checkbox = ({ step, toggle }) => {
   }
 
   return (
-    <div>
-      <input type='checkbox' name={key} checked={checked} onChange={click} />
+    <CheckboxContainer>
+      <CheckboxInput type='checkbox' name={key} id={key} checked={checked} onChange={click} />
       <label htmlFor={key}>{name}</label>
-    </div>
+    </CheckboxContainer>
   )
 }
 
