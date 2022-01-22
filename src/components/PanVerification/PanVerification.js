@@ -13,16 +13,13 @@ const PanVerification = () => {
 
   const [pan, setPan] = usePan()
 
-  const { number, name, category, valid, shouldProcess } = pan
+  const { number, name, category, valid } = pan
 
   useEffect(() => {
     if (!number) {
       navigate('/', { replace: true })
     }
-    if (!shouldProcess) {
-      navigate('/process', { replace: true })
-    }
-  }, [number, shouldProcess])
+  }, [number])
 
   const verify = async () => {
     const response = await fetch('https://2ddcdcfb-1be8-4a36-a12c-65e706d38e7f.mock.pstmn.io/api/verify/pan', {

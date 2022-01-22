@@ -13,13 +13,13 @@ const BankVerification = () => {
 
   const [bank, setBank] = useBank()
 
-  const { type, accountNumber, ifsc, name, shouldProcess } = bank
+  const { type, accountNumber, ifsc, name } = bank
 
   useEffect(() => {
-    if (!shouldProcess) {
-      navigate('/process', { replace: true })
+    if (!ifsc || !accountNumber) {
+      navigate('/', { replace: true })
     }
-  }, [shouldProcess])
+  }, [ifsc, accountNumber])
 
   const verifyBank = async () => {
     const response = await fetch('https://2ddcdcfb-1be8-4a36-a12c-65e706d38e7f.mock.pstmn.io/api/verify/ban', {

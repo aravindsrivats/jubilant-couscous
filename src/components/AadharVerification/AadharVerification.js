@@ -14,13 +14,13 @@ const AadharVerification = () => {
 
   const [aadhar, setAadhar] = useAadhar()
 
-  const { requestId, number, captcha, captchaImage, sentOtp, otp, shareCode, valid, shouldProcess } = aadhar
+  const { requestId, number, captcha, captchaImage, sentOtp, otp, shareCode, valid } = aadhar
 
   useEffect(() => {
-    if (!shouldProcess) {
-      navigate('/process', { replace: true })
+    if (!number) {
+      navigate('/', { replace: true })
     }
-  }, [number, shouldProcess])
+  }, [number])
 
   useEffect(async () => {
     if (sentOtp) {
