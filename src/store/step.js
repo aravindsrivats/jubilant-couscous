@@ -6,20 +6,14 @@ const initialState = [{
   key: 'pan',
   name: 'PAN verification',
   tag: 'PAN verification',
-  inQueue: false,
-  completed: false,
 }, {
   key: 'bank',
   name: 'Bank account verification',
   tag: 'PAN verification',
-  inQueue: false,
-  completed: false,
 }, {
   key: 'aadhar',
   name: 'Offline Aadhar Verification (OKYC)',
   tag: 'OKYC',
-  inQueue: false,
-  completed: false,
 }]
 
 const useSteps = () => {
