@@ -23,7 +23,7 @@ const InputVerification = () => {
   }
 
   const navigate = useNavigate()
-  const [steps] = useSteps()
+  const [steps,_, __, ___, resetSteps] = useSteps()
   const [values, validations, setInputError] = useInput()
 
   const start = () => {
@@ -46,6 +46,11 @@ const InputVerification = () => {
       navigate('/process')
     }
   }
+  
+  const cancel = () => {
+    resetSteps()
+    navigate('/')
+  }
 
   return (
     <>
@@ -54,7 +59,7 @@ const InputVerification = () => {
       <Body>Please provide these details to begin the verification</Body>
       {steps.map(step => inputs[step.key]())}
       <StartButton onClick={start}>Begin Verification</StartButton>
-      <CancelButton>Cancel</CancelButton>
+      <CancelButton onClick={cancel}>Cancel</CancelButton>
     </>
   )
 }

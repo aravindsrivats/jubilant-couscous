@@ -65,7 +65,7 @@ const VerificationStatus = () => {
       </StepList>
       <Block>You will be taken through a step-by-step  process to complete the verification of these data blocks</Block>
       <StartButton onClick={start}>Get Started</StartButton>
-      <CancelButton>Cancel</CancelButton>
+      <CancelButton onClick={done}>Cancel</CancelButton>
     </>
   )
 }
