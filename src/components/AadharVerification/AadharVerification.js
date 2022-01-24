@@ -3,6 +3,8 @@ import { useNavigate, useOutletContext } from 'react-router-dom'
 
 import { useAadhar } from '~/src/store/aadhar'
 
+import { PageAction } from '~/src/components/PageAction'
+
 import { Heading, SmallHeading, Block, Display, Number, EditButton, CheckIcon } from '~/src/styled/PageElements'
 import { StartButton } from '~/src/styled/Button'
 import { TextField }from '~/src/styled/Input'
@@ -96,7 +98,7 @@ const AadharVerification = () => {
 
   if (!sentOtp) {
     return (
-      <>
+      <PageAction label='Send OTP' action={sendOtp}>
         <Heading>Offline Aadhar verification (OKYC)</Heading>
         <Block>
           <Display>
@@ -114,8 +116,7 @@ const AadharVerification = () => {
         }
         <TextField type='text' name='captcha' value={captcha} onChange={input}  />
         <Block success>We will send you an OTP to the mobile number linked with your Aadhar</Block>
-        <StartButton onClick={sendOtp}>Send OTP</StartButton>
-      </>
+      </PageAction>
     )
   }
   if (!valid) {

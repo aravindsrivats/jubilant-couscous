@@ -2,6 +2,8 @@ import React from 'react'
 
 import { useBank } from '~/src/store/bank'
 
+import { PageAction } from '~/src/components/PageAction'
+
 import { Heading, SmallHeading, Block, Display, Number, EditButton, Consent, CheckIcon } from '~/src/styled/PageElements'
 import { StartButton } from '~/src/styled/Button'
 
@@ -13,6 +15,7 @@ const UPIVerification = ({ complete }) => {
   const deepLink = `upi://pay?pa=hari.srivats@okicici&pn=Aravind&am=1&cu=INR`
 
   const startTimer = () => {
+    window.location = deepLink
     setTimeout(verifyUpi, 5000)
   }
 
@@ -25,7 +28,7 @@ const UPIVerification = ({ complete }) => {
 
   if (!valid) {
     return (
-      <>
+      <PageAction label='Open UPI App' action={startTimer}>
         <Heading>Bank account verification</Heading>
         <Block>
           <Display>
@@ -39,8 +42,7 @@ const UPIVerification = ({ complete }) => {
           <Display>Please choose an UPI app that is linked to the bank account you want to verify.</Display>
         </Block>
         <Consent>UPI Consent message</Consent>
-        <a href={deepLink}><StartButton onClick={startTimer}>Open UPI App</StartButton></a>
-      </>
+      </PageAction>
     )
   }
   return (

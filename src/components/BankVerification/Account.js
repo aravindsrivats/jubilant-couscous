@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 
 import { useBank } from '~/src/store/bank'
 
+import { PageAction } from '~/src/components/PageAction'
+
 import { Heading, SmallHeading, Block, Display, Number, EditButton, Consent, CheckIcon } from '~/src/styled/PageElements'
 import { StartButton } from '~/src/styled/Button'
 
@@ -38,7 +40,7 @@ const AccountVerification = ({ complete }) => {
 
   if (!name) {
     return (
-      <>
+      <PageAction label='Verify' action={verifyBank}>
         <Heading>Bank account verification</Heading>
         <Block>
           <Display>
@@ -61,8 +63,7 @@ const AccountVerification = ({ complete }) => {
         </Display>
       </Block>
         <Consent>I am fully aware that my bank details will be submitted to a bank to perform a transaction to verify the information of the account holder.</Consent>
-        <StartButton onClick={verifyBank}>Verify</StartButton>
-      </>
+      </PageAction>
     )
   }
   return (
