@@ -24,7 +24,7 @@ const StepSelection = () => {
         <Body>The order and selections are configurable</Body>
         {
           steps.map(step => {
-            return (<Checkbox key={step.key} step={step} toggle={setStepQueue} />)
+            return (<Checkbox key={step.key} id={step.key} label={step.name} toggle={setStepQueue} />)
           })
         }
       </Selection>
