@@ -124,6 +124,10 @@ const AadharVerification = () => {
     setAadhar({ [`${name}error`]: false })
   }
 
+  const click = e => {
+    e.target.click()
+  }
+
   if(loading) {
     return <Spinner />
   }
@@ -143,7 +147,7 @@ const AadharVerification = () => {
         <InfoLabel>Type the characters you see in the picture</InfoLabel>
         {
           captchaImage
-            ? <Captcha src={`data:image/png;charset=utf-8;base64,${captchaImage}`} />
+            ? <Captcha src={`data:image/png;charset=utf-8;base64,${captchaImage}`} alt='captcha' onLoad={click} />
             : <PlaceHolder />
         }
         <TextField type='text' name='captcha' value={captcha} onChange={input} maxLength='5' error={captchaerror} onFocus={focus} />
@@ -173,7 +177,7 @@ const AadharVerification = () => {
         <Heading>Offline Aadhar verification (OKYC)</Heading>
         <Block success nospace>
           <CheckIcon />
-          <Display>Your PAN verification is<br />successful</Display>
+          <Display>Your Aadhar verification is<br />successful</Display>
         </Block>
         <StartButton onClick={complete}>Next Step</StartButton>
       </>
