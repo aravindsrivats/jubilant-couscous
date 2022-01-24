@@ -16,7 +16,7 @@ const PanInput = () => {
     <>
       <Tip>For PAN verification</Tip>
       <Label htmlFor='pan'>Enter PAN</Label>
-      <TextField type='text' name='pan' value={number} onChange={input}  />
+      <TextField type='text' name='pan' value={number} onChange={input} maxLength='10'  />
     </>
   )
 }

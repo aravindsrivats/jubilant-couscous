@@ -34,9 +34,9 @@ const BankInput = () => {
         type === 'bank' ? (
           <>
           <Label htmlFor='ifsc'>Enter IFSC</Label>
-          <TextField type='text' name='ifsc' value={ifsc} onChange={input}  />
+          <TextField type='text' name='ifsc' value={ifsc} onChange={input} maxLength='9' />
           <Label htmlFor='accountNumber'>Enter bank account number</Label>
-          <TextField type='text' name='accountNumber' value={accountNumber} onChange={input}  />
+          <TextField type='text' name='accountNumber' value={accountNumber} onChange={input} maxLength='12'  />
           </>
         ) : null
       }

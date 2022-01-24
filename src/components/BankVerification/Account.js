@@ -8,6 +8,8 @@ import { PageAction } from '~/src/components/PageAction'
 import { Heading, SmallHeading, Block, Display, Number, EditButton, Consent, CheckIcon } from '~/src/styled/PageElements'
 import { StartButton } from '~/src/styled/Button'
 
+import { maskAccount, maskIfsc } from './util'
+
 const AccountVerification = ({ complete }) => {
   const navigate = useNavigate()
 
@@ -55,11 +57,11 @@ const AccountVerification = ({ complete }) => {
         <Block vertical>
         <Display gap>
           IFSC
-          <Number>{ifsc}</Number>
+          <Number>{maskIfsc(ifsc)}</Number>
         </Display>
         <Display gap>
           Account Number
-          <Number>{accountNumber}</Number>
+          <Number>{maskAccount(accountNumber)}</Number>
         </Display>
       </Block>
         <Consent>I am fully aware that my bank details will be submitted to a bank to perform a transaction to verify the information of the account holder.</Consent>
@@ -80,11 +82,11 @@ const AccountVerification = ({ complete }) => {
       <Block vertical>
       <Display gap>
           IFSC
-          <Number>{ifsc}</Number>
+          <Number>{maskIfsc(ifsc)}</Number>
         </Display>
         <Display gap>
           Account Number
-          <Number>{accountNumber}</Number>
+          <Number>{maskAccount(accountNumber)}</Number>
         </Display>
         <Display gap>
           Account holder name

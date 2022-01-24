@@ -7,6 +7,8 @@ import { PageAction } from '~/src/components/PageAction'
 import { Heading, SmallHeading, Block, Display, Number, EditButton, Consent, CheckIcon } from '~/src/styled/PageElements'
 import { StartButton } from '~/src/styled/Button'
 
+import { maskAccount, maskIfsc } from './util'
+
 const UPIVerification = ({ complete }) => {
   const [bank, setBank] = useBank()
 
@@ -22,6 +24,8 @@ const UPIVerification = ({ complete }) => {
   const verifyUpi = async () => {
     setBank({
       name: 'John Taylor',
+      accountNumber: '116356632891',
+      ifsc: 'ICIC00320',
       valid: true,
     })
   }
@@ -59,11 +63,11 @@ const UPIVerification = ({ complete }) => {
       <Block vertical>
       <Display gap>
           IFSC
-          <Number>{ifsc}</Number>
+          <Number>{maskIfsc(ifsc)}</Number>
         </Display>
         <Display gap>
           Account Number
-          <Number>{accountNumber}</Number>
+          <Number>{maskAccount(accountNumber)}</Number>
         </Display>
         <Display gap>
           Account holder name

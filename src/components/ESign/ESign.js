@@ -5,6 +5,8 @@ import { useESign } from '~/src/store/esign'
 
 import { PageAction } from '~/src/components/PageAction'
 
+import { formatAadhar } from '~/src/components/AadharVerification/util'
+
 import { Heading, SmallHeading, Block, Display, Number, EditButton, Consent, CheckIcon } from '~/src/styled/PageElements'
 import { StartButton } from '~/src/styled/Button'
 import { TextField }from '~/src/styled/Input'
@@ -47,7 +49,7 @@ const ESign = () => {
         <Block>
           <Display>
             Aadhar number
-            <Number>{number}</Number> 
+            <Number>{formatAadhar(number)}</Number> 
           </Display>
           <EditButton>Edit</EditButton>
         </Block>
@@ -64,7 +66,7 @@ const ESign = () => {
         <InfoLabel>Document Name</InfoLabel>
         <SmallHeading>Loan Agreement</SmallHeading>
         <SmallHeading>Enter 6 digit OTP</SmallHeading>
-        <TextField small type='text' name='otp' value={otp} onChange={input}  />
+        <TextField small type='text' name='otp' value={otp} onChange={input} maxLength='6'  />
         <StartButton onClick={verifyOtp}>Verify OTP</StartButton>
       </>
     )

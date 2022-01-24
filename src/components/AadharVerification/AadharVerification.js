@@ -10,6 +10,8 @@ import { StartButton } from '~/src/styled/Button'
 import { TextField }from '~/src/styled/Input'
 import { InfoLabel, Highlight, Captcha, PlaceHolder } from './styled'
 
+import { formatAadhar } from './util'
+
 const AadharVerification = () => {
   const navigate = useNavigate()
   const setStepComplete = useOutletContext()
@@ -103,7 +105,7 @@ const AadharVerification = () => {
         <Block>
           <Display>
             Aadhar number
-            <Number>{number}</Number> 
+            <Number>{formatAadhar(number)}</Number> 
           </Display>
           <EditButton>Edit</EditButton>
         </Block>
@@ -114,7 +116,7 @@ const AadharVerification = () => {
             ? <Captcha src={`data:image/png;charset=utf-8;base64,${captchaImage}`} />
             : <PlaceHolder />
         }
-        <TextField type='text' name='captcha' value={captcha} onChange={input}  />
+        <TextField type='text' name='captcha' value={captcha} onChange={input} maxLength='5'  />
         <Block success>We will send you an OTP to the mobile number linked with your Aadhar</Block>
       </PageAction>
     )
@@ -124,13 +126,13 @@ const AadharVerification = () => {
       <>
         <Heading>Offline Aadhar verification (OKYC)</Heading>
         <SmallHeading>Enter 6 digit OTP</SmallHeading>
-        <TextField small type='text' name='otp' value={otp} onChange={input}  />
+        <TextField small type='text' name='otp' value={otp} onChange={input} maxLength='6'  />
         <SmallHeading>Create a share code</SmallHeading>
         <InfoLabel>
           <Highlight>Please entera 4 digit number. You need not remember this code.</Highlight><br />
           Your Aadhar  data will be locked with this code and only PartnerName can access your data.
         </InfoLabel>
-        <TextField small type='text' name='shareCode' value={shareCode} onChange={input}  />
+        <TextField small type='text' name='shareCode' value={shareCode} onChange={input} maxLength='4'  />
         <StartButton onClick={verifyOtp}>Verify OTP</StartButton>
       </>
     )

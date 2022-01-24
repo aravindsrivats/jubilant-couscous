@@ -16,7 +16,7 @@ const AadharInput = ({ withESign }) => {
     <>
       <Tip>For Aadhar KYC {withESign && 'and E-Sign'}</Tip>
       <Label htmlFor='aadhar'>Enter Aadhar number</Label>
-      <TextField type='text' name='aadhar' value={number} onChange={input}  />
+      <TextField type='text' name='aadhar' value={number} onChange={input} maxLength='12'  />
     </>
   )
 }
