@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { useBank } from '~/src/store/bank'
 
 import { PageAction } from '~/src/components/PageAction'
+import { Spinner } from '~/src/components/Spinner'
 
-import { Heading, SmallHeading, Block, Display, Number, EditButton, Consent, CheckIcon } from '~/src/styled/PageElements'
-import { StartButton } from '~/src/styled/Button'
+import { Heading, SmallHeading, Block, Display, Number, EditButton, Consent, CheckIcon, Body } from '~/src/styled/PageElements'
+import { StartButton, SecondaryButton } from '~/src/styled/Button'
 
 import { maskAccount, maskIfsc } from './util'
 
 const UPIVerification = ({ complete }) => {
+  const [timer, setTimer] = useState(false)
   const [bank, setBank] = useBank()
 
   const { accountNumber, ifsc, name, valid } = bank
@@ -18,10 +20,12 @@ const UPIVerification = ({ complete }) => {
 
   const startTimer = () => {
     window.location = deepLink
-    setTimeout(verifyUpi, 5000)
+    setTimer(true)
+    setTimeout(verifyUpi, 3000)
   }
 
   const verifyUpi = async () => {
+    setTimer(false)
     setBank({
       name: 'John Taylor',
       accountNumber: '116356632891',
@@ -30,6 +34,16 @@ const UPIVerification = ({ complete }) => {
     })
   }
 
+  if (timer) {
+    return (
+      <>
+        <SmallHeading>Waiting for UPI confirmation ...</SmallHeading>
+        <Spinner />
+        <Body>Not Working?</Body>
+        <SecondaryButton>Use second method</SecondaryButton>
+      </>
+    )
+  }
   if (!valid) {
     return (
       <PageAction label='Open UPI App' action={startTimer}>

@@ -24,4 +24,17 @@ margin-top: 15px;
 cursor: pointer;
 `
 
-export { StartButton, CancelButton }
+const SecondaryButton = styled.button`
+border: 2px solid #53B08F;
+outline: 0;
+width: 100%;
+height: 40px;
+background: transparent;
+color: #53B08F;
+text-transform: uppercase;
+border-radius: 3px;
+margin-bottom: 5px;
+cursor: pointer;
+`
+
+export { StartButton, CancelButton, SecondaryButton }
