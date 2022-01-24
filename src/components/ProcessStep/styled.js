@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import { Count } from '~/src/styled/PageElements'
+import { Count, SmallHeading } from '~/src/styled/PageElements'
 
 const Wrapper = styled.section`
   display: flex;
@@ -80,4 +80,8 @@ const TickBox = styled.div`
   }
 `
 
-export { Wrapper, StepInfo, StepItem, CountBox, TickBox }
+const Info = styled(SmallHeading)`
+  text-align: center;
+`
+
+export { Wrapper, StepInfo, StepItem, CountBox, TickBox, Info }
