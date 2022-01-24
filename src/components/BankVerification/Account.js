@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useBank } from '~/src/store/bank'
 
 import { PageAction } from '~/src/components/PageAction'
+import { Spinner } from '~/src/components/Spinner'
 
 import { Heading, SmallHeading, Block, Display, Number, EditButton, Consent, CheckIcon } from '~/src/styled/PageElements'
 import { StartButton } from '~/src/styled/Button'
@@ -13,6 +14,7 @@ import { maskAccount, maskIfsc } from './util'
 const AccountVerification = ({ complete }) => {
   const navigate = useNavigate()
 
+  const [loading, setLoading] = useState(false)
   const [bank, setBank] = useBank()
 
   const { accountNumber, ifsc, name } = bank
@@ -24,6 +26,7 @@ const AccountVerification = ({ complete }) => {
   }, [ifsc, accountNumber])
 
   const verifyBank = async () => {
+    setLoading(true)
     const response = await fetch('https://2ddcdcfb-1be8-4a36-a12c-65e706d38e7f.mock.pstmn.io/api/verify/ban', {
       method: 'post',
       headers: {
@@ -38,6 +41,11 @@ const AccountVerification = ({ complete }) => {
       name: data?.data?.name,
       valid: data?.verification === 'success'
     })
+    setLoading(false)
+  }
+
+  if(loading) {
+    return <Spinner />
   }
 
   if (!name) {

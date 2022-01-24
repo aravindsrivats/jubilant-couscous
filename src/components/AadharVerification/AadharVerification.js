@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useOutletContext } from 'react-router-dom'
 
 import { useAadhar } from '~/src/store/aadhar'
 
 import { PageAction } from '~/src/components/PageAction'
+import { Spinner } from '~/src/components/Spinner'
 
 import { Heading, SmallHeading, Block, Display, Number, EditButton, CheckIcon } from '~/src/styled/PageElements'
 import { StartButton } from '~/src/styled/Button'
@@ -16,11 +17,10 @@ const AadharVerification = () => {
   const navigate = useNavigate()
   const setStepComplete = useOutletContext()
 
+  const [loading, setLoading] = useState(false)
   const [aadhar, setAadhar] = useAadhar()
 
   const { requestId, number, captcha, captchaImage, captchaerror, sentOtp, otp, otperror, shareCode, shareCodeerror, valid } = aadhar
-
-  console.log(useAadhar())
 
   useEffect(() => {
     if (!number) {
@@ -32,6 +32,7 @@ const AadharVerification = () => {
     if (sentOtp) {
       return
     }
+    setLoading(true)
     let response = await fetch('https://2ddcdcfb-1be8-4a36-a12c-65e706d38e7f.mock.pstmn.io/api/okyc/', {
       method: 'post',
       headers: {
@@ -53,6 +54,7 @@ const AadharVerification = () => {
     const { captchaImage } = await response.json()
 
     setAadhar({ requestId: id, captchaImage })
+    setLoading(false)
   }, [sentOtp])
 
   const input = e => {
@@ -64,6 +66,7 @@ const AadharVerification = () => {
     if (captcha === '') {
       return setAadhar({ captchaerror: true })
     }
+    setLoading(true)
     const response = await fetch(`https://2ddcdcfb-1be8-4a36-a12c-65e706d38e7f.mock.pstmn.io/api/okyc/${requestId}/verify`, {
       method: 'post',
       headers: {
@@ -79,6 +82,7 @@ const AadharVerification = () => {
     const data = await response.json()
 
     setAadhar({ sentOtp: true })
+    setLoading(false)
   }
 
   const verifyOtp = async () => {
@@ -92,6 +96,7 @@ const AadharVerification = () => {
     if (error) {
       return setAadhar(error)
     }
+    setLoading(true)
     const response = await fetch(`https://2ddcdcfb-1be8-4a36-a12c-65e706d38e7f.mock.pstmn.io/api/okyc/${requestId}/complete`, {
       method: 'post',
       headers: {
@@ -107,6 +112,7 @@ const AadharVerification = () => {
     const data = await response.json()
 
     setAadhar({ valid: !!data?.id })
+    setLoading(false)
   }
 
   const complete = () => {
@@ -116,6 +122,10 @@ const AadharVerification = () => {
   const focus = e => {
     const { name } = e.target
     setAadhar({ [`${name}error`]: false })
+  }
+
+  if(loading) {
+    return <Spinner />
   }
 
   if (!sentOtp) {

@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useOutletContext } from 'react-router-dom'
 
 import { usePan } from '~/src/store/pan'
 
 import { PageAction } from '~/src/components/PageAction'
+import { Spinner } from '~/src/components/Spinner'
 
 import { Heading, SmallHeading, Block, Display, Number, EditButton, Consent, CheckIcon } from '~/src/styled/PageElements'
 import { StartButton } from '~/src/styled/Button'
@@ -12,6 +13,7 @@ const PanVerification = () => {
   const navigate = useNavigate()
   const setStepComplete = useOutletContext()
 
+  const [loading, setLoading] = useState(false)
   const [pan, setPan] = usePan()
 
   const { number, name, category, valid } = pan
@@ -23,6 +25,7 @@ const PanVerification = () => {
   }, [number])
 
   const verify = async () => {
+    setLoading(true)
     const response = await fetch('https://2ddcdcfb-1be8-4a36-a12c-65e706d38e7f.mock.pstmn.io/api/verify/pan', {
       method: 'post',
       headers: {
@@ -32,16 +35,21 @@ const PanVerification = () => {
     })
 
     const data = await response.json()
-
+    
     setPan({
       name: data?.data?.full_name,
       category: data?.data?.category,
       valid: data?.verification === 'success'
     })
+    setLoading(false)
   }
 
   const complete = () => {
     setStepComplete('pan')
+  }
+
+  if(loading) {
+    return <Spinner />
   }
 
   if (number && !name) {

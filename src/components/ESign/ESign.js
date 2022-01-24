@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
 import { useESign } from '~/src/store/esign'
 
 import { PageAction } from '~/src/components/PageAction'
+import { Spinner } from '~/src/components/Spinner'
 
 import { formatAadhar } from '~/src/components/AadharVerification/util'
 
@@ -16,13 +17,16 @@ import { InfoLabel } from './styled'
 const ESign = () => {
   const setStepComplete = useOutletContext()
 
+  const [loading, setLoading] = useState(false)
   const [esign, setESign] = useESign()
 
   const { sentOtp, otp = '', otperror, number, valid } = esign
 
   const sendOtp = async () => {
+    setLoading(true)
     setTimeout(() => {
       setESign({ sentOtp: true })
+      setLoading(false)
     }, 1000)
   }
   
@@ -37,12 +41,18 @@ const ESign = () => {
     if (otp === '' || otp.length < 6) {
       return setESign({ otperror: true })
     }
+    setLoading(true)
     setTimeout(() => {
       setESign({ valid: true })
+      setLoading(false)
     }, 1000)
   }
 
   const complete = () => setStepComplete('esign')
+
+  if(loading) {
+    return <Spinner />
+  }
 
   if (!sentOtp) {
     return (
