@@ -18,13 +18,13 @@ const useESign = () => {
   }, [esign, aadhar])
 
   const setESign = data =>
-    setState({ 
-      ...state,
+    setState(prev => ({ 
+      ...prev,
       esign: {
-        ...state.esign,
+        ...prev.esign,
         ...data,
       }
-    })
+    }))
 
   return [data, setESign]
 }

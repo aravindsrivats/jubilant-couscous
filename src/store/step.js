@@ -29,9 +29,9 @@ const useSteps = () => {
   , [step])
 
   const setStepQueue = (key, status) => 
-    setState({
-      ...state,
-      step: step.map(item => {
+    setState(prev => ({
+      ...prev,
+      step: prev.step.map(item => {
         if (item.key === key) {
           return {
             ...item,
@@ -40,13 +40,13 @@ const useSteps = () => {
         }
         return item
       })
-    })
+    }))
 
   const setStepProgress =  useCallback(
     key => 
-      setState({ 
-        ...state,
-        step: step.map(item => {
+      setState(prev => ({ 
+        ...prev,
+        step: prev.step.map(item => {
           if (item.key === key) {
             return {
               ...item,
@@ -55,15 +55,15 @@ const useSteps = () => {
           }
           return item
         }),
-      }),
+      })),
       [step, setState]
     )
 
   const setStepComplete = useCallback(
     key =>
-      setState({
-        ...state,
-        step: step.map(item => {
+      setState(prev => ({
+        ...prev,
+        step: prev.step.map(item => {
           if (item.key === key) {
             return {
               ...item,
@@ -73,7 +73,7 @@ const useSteps = () => {
           }
           return item
         }),
-      }),
+      })),
     [step, setState]
   )
 

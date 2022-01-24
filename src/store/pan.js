@@ -9,13 +9,13 @@ const usePan = () => {
   const { pan } = state
 
   const setPan = data =>
-    setState({ 
-      ...state,
+    setState(prev => ({ 
+      ...prev,
       pan: {
-        ...state.pan,
+        ...prev.pan,
         ...data,
       }
-    })
+    }))
 
   return [pan, setPan]
 }

@@ -11,13 +11,13 @@ const useBank = () => {
   const { bank } = state
 
   const setBank = data =>
-    setState({ 
-      ...state,
+    setState(prev => ({ 
+      ...prev,
       bank: {
-        ...state.bank,
+        ...prev.bank,
         ...data,
       }
-    })
+    }))
 
   return [bank, setBank]
 }

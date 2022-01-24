@@ -12,13 +12,13 @@ const useAadhar = () => {
   const { aadhar } = state
 
   const setAadhar = data =>
-    setState({ 
-      ...state,
+    setState(prev => ({ 
+      ...prev,
       aadhar: {
-        ...state.aadhar,
+        ...prev.aadhar,
         ...data,
       }
-    })
+    }))
 
   return [aadhar, setAadhar]
 }
