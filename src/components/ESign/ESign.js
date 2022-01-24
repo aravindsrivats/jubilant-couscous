@@ -9,7 +9,7 @@ import { Spinner } from '~/src/components/Spinner'
 import { formatAadhar } from '~/src/components/AadharVerification/util'
 
 import { Heading, SmallHeading, Block, Display, Number, EditButton, Consent, CheckIcon } from '~/src/styled/PageElements'
-import { StartButton } from '~/src/styled/Button'
+import { StartButton, TextLink } from '~/src/styled/Button'
 import { TextField }from '~/src/styled/Input'
 
 import { InfoLabel } from './styled'
@@ -82,6 +82,7 @@ const ESign = () => {
         <SmallHeading>Loan Agreement</SmallHeading>
         <SmallHeading>Enter 6 digit OTP</SmallHeading>
         <TextField small type='text' name='otp' value={otp} onChange={input} maxLength='6' error={otperror} onFocus={focus} />
+        <TextLink onClick={sendOtp}>Resend OTP</TextLink>
         <StartButton onClick={verifyOtp}>Verify OTP</StartButton>
       </>
     )

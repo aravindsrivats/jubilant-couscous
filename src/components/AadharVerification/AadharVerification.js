@@ -7,7 +7,7 @@ import { PageAction } from '~/src/components/PageAction'
 import { Spinner } from '~/src/components/Spinner'
 
 import { Heading, SmallHeading, Block, Display, Number, EditButton, CheckIcon } from '~/src/styled/PageElements'
-import { StartButton } from '~/src/styled/Button'
+import { StartButton, TextLink } from '~/src/styled/Button'
 import { TextField }from '~/src/styled/Input'
 import { InfoLabel, Highlight, Captcha, PlaceHolder } from './styled'
 
@@ -161,6 +161,7 @@ const AadharVerification = () => {
         <Heading>Offline Aadhar verification (OKYC)</Heading>
         <SmallHeading>Enter 6 digit OTP</SmallHeading>
         <TextField small type='text' name='otp' value={otp} onChange={input} maxLength='6' error={otperror} onFocus={focus}  />
+        <TextLink onClick={sendOtp}>Resend OTP</TextLink>
         <SmallHeading>Create a share code</SmallHeading>
         <InfoLabel>
           <Highlight>Please entera 4 digit number. You need not remember this code.</Highlight><br />

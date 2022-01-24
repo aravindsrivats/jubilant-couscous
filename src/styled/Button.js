@@ -37,4 +37,12 @@ margin-bottom: 5px;
 cursor: pointer;
 `
 
-export { StartButton, CancelButton, SecondaryButton }
+const TextLink = styled.div`
+  color: #53B08F;
+  margin-top: -20px;
+  font-weight: 500;
+  margin-bottom: 35px;
+  cursor: pointer;
+`
+
+export { StartButton, CancelButton, SecondaryButton, TextLink }
