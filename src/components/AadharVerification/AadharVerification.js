@@ -18,7 +18,9 @@ const AadharVerification = () => {
 
   const [aadhar, setAadhar] = useAadhar()
 
-  const { requestId, number, captcha, captchaImage, sentOtp, otp, shareCode, valid } = aadhar
+  const { requestId, number, captcha, captchaImage, captchaerror, sentOtp, otp, otperror, shareCode, shareCodeerror, valid } = aadhar
+
+  console.log(useAadhar())
 
   useEffect(() => {
     if (!number) {
@@ -59,6 +61,9 @@ const AadharVerification = () => {
   }
 
   const sendOtp = async () => {
+    if (captcha === '') {
+      return setAadhar({ captchaerror: true })
+    }
     const response = await fetch(`https://2ddcdcfb-1be8-4a36-a12c-65e706d38e7f.mock.pstmn.io/api/okyc/${requestId}/verify`, {
       method: 'post',
       headers: {
@@ -77,6 +82,16 @@ const AadharVerification = () => {
   }
 
   const verifyOtp = async () => {
+    let error = false
+    if (otp === '' || otp.length < 6) {
+      error = { ...error, otperror: true }
+    }
+    if (shareCode === '' || shareCode.length < 4) {
+      error = { ...error, shareCodeerror: true }
+    }
+    if (error) {
+      return setAadhar(error)
+    }
     const response = await fetch(`https://2ddcdcfb-1be8-4a36-a12c-65e706d38e7f.mock.pstmn.io/api/okyc/${requestId}/complete`, {
       method: 'post',
       headers: {
@@ -98,6 +113,11 @@ const AadharVerification = () => {
     setStepComplete('aadhar')
   }
 
+  const focus = e => {
+    const { name } = e.target
+    setAadhar({ [`${name}error`]: false })
+  }
+
   if (!sentOtp) {
     return (
       <PageAction label='Send OTP' action={sendOtp}>
@@ -116,7 +136,7 @@ const AadharVerification = () => {
             ? <Captcha src={`data:image/png;charset=utf-8;base64,${captchaImage}`} />
             : <PlaceHolder />
         }
-        <TextField type='text' name='captcha' value={captcha} onChange={input} maxLength='5'  />
+        <TextField type='text' name='captcha' value={captcha} onChange={input} maxLength='5' error={captchaerror} onFocus={focus} />
         <Block success>We will send you an OTP to the mobile number linked with your Aadhar</Block>
       </PageAction>
     )
@@ -126,13 +146,13 @@ const AadharVerification = () => {
       <>
         <Heading>Offline Aadhar verification (OKYC)</Heading>
         <SmallHeading>Enter 6 digit OTP</SmallHeading>
-        <TextField small type='text' name='otp' value={otp} onChange={input} maxLength='6'  />
+        <TextField small type='text' name='otp' value={otp} onChange={input} maxLength='6' error={otperror} onFocus={focus}  />
         <SmallHeading>Create a share code</SmallHeading>
         <InfoLabel>
           <Highlight>Please entera 4 digit number. You need not remember this code.</Highlight><br />
           Your Aadhar  data will be locked with this code and only PartnerName can access your data.
         </InfoLabel>
-        <TextField small type='text' name='shareCode' value={shareCode} onChange={input} maxLength='4'  />
+        <TextField small type='text' name='shareCode' value={shareCode} onChange={input} maxLength='4' error={shareCodeerror} onFocus={focus} />
         <StartButton onClick={verifyOtp}>Verify OTP</StartButton>
       </>
     )

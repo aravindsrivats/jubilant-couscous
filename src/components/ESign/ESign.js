@@ -18,13 +18,15 @@ const ESign = () => {
 
   const [esign, setESign] = useESign()
 
-  const { sentOtp, otp, number, valid } = esign
+  const { sentOtp, otp = '', otperror, number, valid } = esign
 
   const sendOtp = async () => {
     setTimeout(() => {
       setESign({ sentOtp: true })
     }, 1000)
   }
+  
+  const focus = () => setESign({ otperror: false })
 
   const input = e => {
     const {  value } = e.target
@@ -32,6 +34,9 @@ const ESign = () => {
   }
 
   const verifyOtp = async () => {
+    if (otp === '' || otp.length < 6) {
+      return setESign({ otperror: true })
+    }
     setTimeout(() => {
       setESign({ valid: true })
     }, 1000)
@@ -66,7 +71,7 @@ const ESign = () => {
         <InfoLabel>Document Name</InfoLabel>
         <SmallHeading>Loan Agreement</SmallHeading>
         <SmallHeading>Enter 6 digit OTP</SmallHeading>
-        <TextField small type='text' name='otp' value={otp} onChange={input} maxLength='6'  />
+        <TextField small type='text' name='otp' value={otp} onChange={input} maxLength='6' error={otperror} onFocus={focus} />
         <StartButton onClick={verifyOtp}>Verify OTP</StartButton>
       </>
     )
