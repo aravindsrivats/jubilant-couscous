@@ -79,7 +79,7 @@ const CheckboxInput = styled.input`
   width: 20px;
   height: 20px;
   background: #FFFFFF;
-  border: 2px solid #53B08F;
+  border: 2px solid ${props => props.error ? '#D53609' : '#53B08F'};
   border-radius: 3px;
   margin-right: 20px;
   cursor: pointer;
@@ -87,6 +87,7 @@ const CheckboxInput = styled.input`
   aspect-ratio: 1 / 1;
 
   &:checked {
+    border: 2px solid #53B08F;
     background: #53B08F;
   }
   &:checked:before {

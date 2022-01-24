@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { CheckboxInput } from '~/src/styled/Input'
 import { CheckboxContainer } from './styled'
 
-const Checkbox = ({ id, label, toggle }) => {
+const Checkbox = ({ id, label, toggle, error }) => {
   const [checked, setChecked] = useState(false)
 
   const click = () => {
@@ -13,7 +13,7 @@ const Checkbox = ({ id, label, toggle }) => {
 
   return (
     <CheckboxContainer>
-      <CheckboxInput type='checkbox' name={id} id={id} checked={checked} onChange={click} />
+      <CheckboxInput type='checkbox' name={id} id={id} checked={checked} onChange={click} error={error} />
       <label htmlFor={id}>{label}</label>
     </CheckboxContainer>
   )
