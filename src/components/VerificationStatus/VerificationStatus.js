@@ -14,7 +14,7 @@ const VerificationStatus = () => {
   const navigate = useNavigate()
   const [steps, _, __, ___, resetSteps] = useSteps()
 
-  const start = () => navigate('/setup')
+  const start = () => navigate('/input')
 
   const done = () => {
     resetSteps()

@@ -15,7 +15,7 @@ const StepSelection = () => {
   const [_, setStepQueue] = useSteps()
   const steps = useStepList()
 
-  const start = () => navigate('/home')
+  const start = () => navigate('/setup')
 
   return (
     <>

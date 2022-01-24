@@ -11,7 +11,7 @@ import { useSteps } from '~/src/store/step'
 import { Heading, Body } from '~/src/styled/PageElements'
 import { StartButton, CancelButton } from '~/src/styled/Button'
 
-const SetupVerification = () => {
+const InputVerification = () => {
   const [withESign, setWithESign] = useState(false)
 
   const inputs = {
@@ -38,4 +38,4 @@ const SetupVerification = () => {
   )
 }
 
-export default SetupVerification
+export default InputVerification
