@@ -3,6 +3,8 @@ import { useNavigate, useOutletContext } from 'react-router-dom'
 
 import { usePan } from '~/src/store/pan'
 
+import { PageAction } from '~/src/components/PageAction'
+
 import { Heading, SmallHeading, Block, Display, Number, EditButton, Consent, CheckIcon } from '~/src/styled/PageElements'
 import { StartButton } from '~/src/styled/Button'
 
@@ -44,7 +46,7 @@ const PanVerification = () => {
 
   if (number && !name) {
     return (
-      <>
+      <PageAction label='Verify PAN' action={verify}>
         <Heading>PAN verification</Heading>
         <Block>
           <Display>
@@ -54,8 +56,7 @@ const PanVerification = () => {
           <EditButton>Edit</EditButton>
         </Block>
         <Consent>I am fully aware that my PAN details will be submitted to NSDL to perform a transaction to verify the information of my PAN Number.</Consent>
-        <StartButton onClick={verify}>Verify PAN</StartButton>
-      </>
+      </PageAction>
     )
   }
   return (

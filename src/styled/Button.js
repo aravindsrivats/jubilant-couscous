@@ -10,7 +10,7 @@ color: #FFFFFF;
 text-transform: uppercase;
 border-radius: 3px;
 box-shadow: 0px 3px 3px #B4B4B4;
-margin-bottom: 15px;
+margin-bottom: 5px;
 cursor: pointer;
 `
 
@@ -20,6 +20,7 @@ outline: 0;
 width: 100%;
 color: #53B08F;
 font-weight: 500;
+margin-top: 15px;
 cursor: pointer;
 `
 

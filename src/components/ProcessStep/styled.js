@@ -2,6 +2,12 @@ import styled from '@emotion/styled'
 
 import { Count } from '~/src/styled/PageElements'
 
+const Wrapper = styled.section`
+  display: flex;
+  flex-flow: column;
+  min-height: calc(100vh - 40px);
+`
+
 const StepInfo = styled.section`
   display: flex;
   justify-content: space-around;
@@ -74,4 +80,4 @@ const TickBox = styled.div`
   }
 `
 
-export { StepInfo, StepItem, CountBox, TickBox }
+export { Wrapper, StepInfo, StepItem, CountBox, TickBox }

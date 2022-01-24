@@ -6,7 +6,7 @@ import { MastHead } from '~/src/components/MastHead'
 import { useSteps } from '~/src/store/step'
 
 import { TickBox } from '~/src/styled/PageElements'
-import { StepInfo, StepItem, CountBox } from './styled'
+import { Wrapper, StepInfo, StepItem, CountBox } from './styled'
 
 const ProcessStep = () => {
   const navigate = useNavigate()
@@ -25,7 +25,7 @@ const ProcessStep = () => {
   }, [steps])
 
   return (
-    <>
+    <Wrapper>
       <MastHead />
       <StepInfo>
         {
@@ -45,7 +45,7 @@ const ProcessStep = () => {
         }
       </StepInfo>
       <Outlet context={setStepComplete} />
-    </>
+    </Wrapper>
   )
 }
 
