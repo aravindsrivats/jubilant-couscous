@@ -17,7 +17,7 @@ const Label = styled.label`
 
 const TextField = styled.input`
 outline: 0;
-border: thin solid #D8D8D8;
+border: thin solid ${props => props.error ? '#D53609' : '#D8D8D8'};
 font-size: 1rem;
 padding: 15px;
 margin-bottom: 40px;

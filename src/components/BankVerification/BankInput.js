@@ -5,11 +5,16 @@ import { useBank } from '~/src/store/bank'
 import { Tip, Label, TextField, Option, RadioButton, SubLabel } from '~/src/styled/Input'
 
 const BankInput = () => {
-  const [{ type, ifsc, accountNumber }, setBank] = useBank()
+  const [{ type, ifsc, accountNumber, accountNumbererror, ifscerror }, setBank] = useBank()
 
   const input = e => {
     const { name, value } = e.target
     setBank({ [name]: value })
+  }
+
+  const focus = e => {
+    const { name } = e.target
+    setBank({ [`${name}error`]: false })
   }
 
   return (
@@ -34,9 +39,9 @@ const BankInput = () => {
         type === 'bank' ? (
           <>
           <Label htmlFor='ifsc'>Enter IFSC</Label>
-          <TextField type='text' name='ifsc' value={ifsc} onChange={input} maxLength='9' />
+          <TextField type='text' name='ifsc' value={ifsc} onChange={input} maxLength='9' error={ifscerror} onFocus={focus} />
           <Label htmlFor='accountNumber'>Enter bank account number</Label>
-          <TextField type='text' name='accountNumber' value={accountNumber} onChange={input} maxLength='12'  />
+          <TextField type='text' name='accountNumber' value={accountNumber} onChange={input} maxLength='12' error={accountNumbererror} onFocus={focus}  />
           </>
         ) : null
       }
